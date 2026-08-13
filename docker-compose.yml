@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    container_name: smokesoft_db
+    restart: always
+    environment:
+      POSTGRES_DB: smokesoft
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin321
+    ports:
+      - "5432:5432"
+    volumes:
+      - smokesoft_data:/var/lib/postgresql/data
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+volumes:
+  smokesoft_data:
