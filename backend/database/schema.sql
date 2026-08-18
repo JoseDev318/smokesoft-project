@@ -25,7 +25,8 @@ CREATE TABLE producto (
     stock         INT NOT NULL DEFAULT 0,
     id_categoria  INT REFERENCES categoria(id_categoria),
     id_proveedor  INT REFERENCES proveedor(id_proveedor),
-    activo        BOOLEAN NOT NULL DEFAULT true
+    activo        BOOLEAN NOT NULL DEFAULT true,
+    stock_minimo  INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE cliente (

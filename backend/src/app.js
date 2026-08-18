@@ -5,6 +5,7 @@ const morgan = require('morgan');
 
 const authRoutes = require('./modules/auth/auth.routes');
 const usuariosRoutes = require('./modules/usuarios/usuarios.routes');
+const productosRoutes = require('./modules/productos/productos.routes');
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.get('/api/health', (req, res) => {
 // productos y compras/ventas, cada uno agrega una línea como estas:
 app.use('/api/auth', authRoutes);
 app.use('/api/usuarios', usuariosRoutes);
-
+app.use('/api/productos', productosRoutes);
 // Si ninguna ruta coincidió
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });
