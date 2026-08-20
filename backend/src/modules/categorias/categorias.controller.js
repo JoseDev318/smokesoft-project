@@ -8,7 +8,7 @@ async function listar(req, res, next) {
 
 async function obtener(req, res, next) {
   try {
-    const categoria = await categoriasService.obtenerPorId(req.params.id);
+    const categoria = await categoriasService.obtenerPorId(req.idParam);
     if (!categoria) return res.status(404).json({ error: 'Categoría no encontrada' });
     res.json(categoria);
   } catch (error) { next(error); }
@@ -22,13 +22,17 @@ async function crear(req, res, next) {
 
 async function actualizar(req, res, next) {
   try {
-    res.json(await categoriasService.actualizar(req.params.id, req.body));
+    const actualizada = await categoriasService.actualizar(req.idParam, req.body);
+    // Sin esta guarda, un id inexistente devolvía 200 con cuerpo vacío
+    // (res.json(undefined)) y el frontend lo leía como "guardado".
+    if (!actualizada) return res.status(404).json({ error: 'Categoría no encontrada' });
+    res.json(actualizada);
   } catch (error) { next(error); }
 }
 
 async function eliminar(req, res, next) {
   try {
-    await categoriasService.eliminar(req.params.id);
+    await categoriasService.eliminar(req.idParam);
     res.status(204).send();
   } catch (error) { next(error); }
 }

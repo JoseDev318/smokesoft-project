@@ -13,4 +13,24 @@ async function login(req, res, next) {
   }
 }
 
-module.exports = { login };
+// Registro público de un cliente de la tienda. Devuelve un token para que el
+// visitante quede logueado sin pasar por la pantalla de ingreso.
+async function registro(req, res, next) {
+  try {
+    const resultado = await authService.registrarCliente(req.body);
+    res.status(201).json(resultado);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function yo(req, res, next) {
+  try {
+    const usuario = await authService.obtenerSesion(req.usuario.id);
+    res.json(usuario);
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { login, registro, yo };

@@ -8,6 +8,9 @@ const usuariosRoutes = require('./modules/usuarios/usuarios.routes');
 const productosRoutes = require('./modules/productos/productos.routes');
 const categoriasRoutes = require('./modules/categorias/categorias.routes');
 const proveedoresRoutes = require('./modules/proveedores/proveedores.routes');
+const clientesRoutes = require('./modules/clientes/clientes.routes');
+const ventasRoutes = require('./modules/ventas/ventas.routes');
+const comprasRoutes = require('./modules/compras/compras.routes');
 
 const app = express();
 
@@ -27,6 +30,9 @@ app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/productos', productosRoutes);
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/proveedores', proveedoresRoutes);
+app.use('/api/clientes', clientesRoutes);
+app.use('/api/ventas', ventasRoutes);       // ventas a cliente: descuenta stock
+app.use('/api/compras', comprasRoutes);     // compras a proveedor: suma stock
 // Si ninguna ruta coincidió
 app.use((req, res) => {
   res.status(404).json({ error: 'Ruta no encontrada' });

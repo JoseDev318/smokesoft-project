@@ -8,7 +8,7 @@ async function listar(req, res, next) {
 
 async function obtener(req, res, next) {
   try {
-    const proveedor = await proveedoresService.obtenerPorId(req.params.id);
+    const proveedor = await proveedoresService.obtenerPorId(req.idParam);
     if (!proveedor) return res.status(404).json({ error: 'Proveedor no encontrado' });
     res.json(proveedor);
   } catch (error) { next(error); }
@@ -22,13 +22,15 @@ async function crear(req, res, next) {
 
 async function actualizar(req, res, next) {
   try {
-    res.json(await proveedoresService.actualizar(req.params.id, req.body));
+    const actualizado = await proveedoresService.actualizar(req.idParam, req.body);
+    if (!actualizado) return res.status(404).json({ error: 'Proveedor no encontrado' });
+    res.json(actualizado);
   } catch (error) { next(error); }
 }
 
 async function eliminar(req, res, next) {
   try {
-    await proveedoresService.eliminar(req.params.id);
+    await proveedoresService.eliminar(req.idParam);
     res.status(204).send();
   } catch (error) { next(error); }
 }

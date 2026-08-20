@@ -1,0 +1,59 @@
+/* Reset y estilos de documento, equivalentes al bloque inicial de
+   smokesoft/css/estilosIndex.css. */
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-texto);
+    /* Cada shell pinta su propio fondo: el público con la foto de humo, el
+       admin con gris plano. */
+    background-color: var(--color-fondo-app);
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* El guía nunca definió foco visible. Sin esto, navegar con teclado por un
+     panel de tablas y botones emoji es imposible. */
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-acento);
+    color: var(--color-sobre-acento);
+  }
+
+  /* Scrollbar acorde a las superficies oscuras. */
+  * {
+    scrollbar-color: var(--color-neutro) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-neutro);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-neutro-hover);
+  }
+}

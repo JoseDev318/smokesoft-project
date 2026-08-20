@@ -1,0 +1,112 @@
+/* La tabla estándar del panel. Va como clase porque estilar `th`/`td` como
+   descendientes es justo lo que las utilidades no pueden hacer sin poner una
+   className en cada celda generada. */
+
+@layer components {
+  .contenedor-tabla {
+    overflow-x: auto;
+  }
+
+  .tabla-modulo {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tabla-modulo th,
+  .tabla-modulo td {
+    padding: 0.7rem 0.75rem;
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--color-borde-suave);
+  }
+
+  .tabla-modulo th {
+    background-color: var(--color-superficie-alta);
+    color: var(--color-acento);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .tabla-modulo td {
+    color: var(--color-texto-tabla);
+  }
+
+  .tabla-modulo tbody tr:last-child th,
+  .tabla-modulo tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Encabezado ordenable: el cursor y el hover indican que se puede pulsar. */
+  .tabla-modulo th[aria-sort] {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .tabla-modulo th[aria-sort]:hover {
+    color: var(--color-texto);
+  }
+
+  .celda-vacia {
+    text-align: center;
+    color: var(--color-texto-tenue);
+    padding: 1.5rem;
+  }
+
+  .celda-acciones {
+    white-space: nowrap;
+  }
+
+  .celda-numerica {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* Tabla compacta de líneas editables (venta / compra). */
+  .tabla-lineas {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tabla-lineas th,
+  .tabla-lineas td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--color-borde-suave);
+  }
+
+  .tabla-lineas th {
+    color: var(--color-acento);
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .tabla-lineas td {
+    color: var(--color-texto-tabla);
+  }
+
+  .tabla-lineas select,
+  .tabla-lineas input {
+    width: 100%;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: var(--color-texto);
+    background-color: var(--color-superficie-alta);
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+  }
+
+  .tabla-lineas select:focus,
+  .tabla-lineas input:focus {
+    border-color: var(--color-acento);
+    outline: none;
+  }
+
+  @media (max-width: 600px) {
+    .tabla-modulo th,
+    .tabla-modulo td {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+}

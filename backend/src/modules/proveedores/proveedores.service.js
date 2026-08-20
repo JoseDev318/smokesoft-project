@@ -1,4 +1,5 @@
 const pool = require('../../config/db');
+const { conErroresLegibles } = require('../../utils/errores');
 
 async function obtenerTodos() {
   const result = await pool.query('SELECT * FROM proveedor ORDER BY id_proveedor');
@@ -27,7 +28,10 @@ async function actualizar(id, { nombre, telefono, direccion, correo }) {
 }
 
 async function eliminar(id) {
-  await pool.query('DELETE FROM proveedor WHERE id_proveedor = $1', [id]);
+  await conErroresLegibles(
+    () => pool.query('DELETE FROM proveedor WHERE id_proveedor = $1', [id]),
+    { llaveForanea: 'No se puede eliminar el proveedor porque tiene productos o compras asociadas' }
+  );
 }
 
 module.exports = { obtenerTodos, obtenerPorId, crear, actualizar, eliminar };

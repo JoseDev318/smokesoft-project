@@ -1,4 +1,5 @@
 const pool = require('../../config/db');
+const { conErroresLegibles } = require('../../utils/errores');
 
 async function obtenerTodas() {
   const result = await pool.query('SELECT * FROM categoria ORDER BY id_categoria');
@@ -27,7 +28,10 @@ async function actualizar(id, { nombre, descripcion }) {
 }
 
 async function eliminar(id) {
-  await pool.query('DELETE FROM categoria WHERE id_categoria = $1', [id]);
+  await conErroresLegibles(
+    () => pool.query('DELETE FROM categoria WHERE id_categoria = $1', [id]),
+    { llaveForanea: 'No se puede eliminar la categoría porque tiene productos asociados' }
+  );
 }
 
 module.exports = { obtenerTodas, obtenerPorId, crear, actualizar, eliminar };

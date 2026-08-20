@@ -1,0 +1,98 @@
+/* La tarjeta de producto es la ÚNICA superficie clara de toda la aplicación:
+   una tarjeta blanca flotando sobre el fondo de humo, con texto oscuro.
+   Va como clase por el hover compuesto (escala + cambio de sombra) y por el
+   estilado de descendientes. */
+
+@layer components {
+  .tarjeta-producto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 0.9375rem;
+    text-align: center;
+    background-color: var(--color-tarjeta-clara);
+    border-radius: var(--radius-tarjeta);
+    box-shadow: var(--shadow-producto);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tarjeta-producto:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-producto-hover);
+  }
+
+  .tarjeta-producto img {
+    width: 100%;
+    height: 180px;
+    /* `contain` y no `cover`: las fotos del guía vienen recortadas a distintas
+       proporciones y `cover` les cortaría el producto. */
+    object-fit: contain;
+    margin-bottom: 0.625rem;
+  }
+
+  .tarjeta-producto__nombre {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-tarjeta-clara-titulo);
+  }
+
+  .tarjeta-producto__categoria {
+    font-size: 0.85rem;
+    margin-bottom: 0.625rem;
+    color: var(--color-tarjeta-clara-texto);
+  }
+
+  .tarjeta-producto__precio {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-acento-hover);
+  }
+
+  .tarjeta-producto__precio-anterior {
+    margin-right: 0.625rem;
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: var(--color-tarjeta-clara-tenue);
+  }
+
+  .tarjeta-producto__existencias {
+    font-size: 0.85rem;
+    margin: 0.625rem 0 0.9375rem;
+    color: var(--color-tarjeta-clara-texto);
+  }
+
+  /* Empuja el botón al fondo para que las tarjetas de una fila queden
+     alineadas aunque los nombres ocupen distinto número de líneas. */
+  .tarjeta-producto__pie {
+    margin-top: auto;
+  }
+
+  /* Etiquetas de esquina OFERTA / NUEVO. */
+  .etiqueta-producto {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0.3rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-etiqueta);
+  }
+
+  .etiqueta-producto--oferta {
+    background-color: var(--color-peligro);
+    color: var(--color-texto);
+  }
+
+  .etiqueta-producto--nuevo {
+    background-color: var(--color-acento);
+    color: var(--color-sobre-acento);
+  }
+
+  @media (max-width: 600px) {
+    .tarjeta-producto {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}

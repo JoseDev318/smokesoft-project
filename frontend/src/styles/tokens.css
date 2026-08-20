@@ -1,0 +1,97 @@
+/**
+ * Sistema de diseño de SmokeSoft.
+ *
+ * Traducido del proyecto guía estático (smokesoft/css/*.css), donde estos
+ * valores estaban repetidos a mano en 6 hojas de estilo sin una sola variable.
+ * Este archivo es la única fuente de verdad: todo componente deriva de aquí.
+ */
+
+@theme {
+  /* ---------- Marca ---------- */
+  --color-acento: #00e0d1;
+  --color-acento-hover: #00b5a8;
+  /* Variantes con alfa. El patrón del guía: fondo tenue + texto a color pleno,
+     que se invierte a fondo pleno + texto oscuro en hover. */
+  --color-acento-menu: rgba(0, 224, 209, 0.1);      /* hover de item de sidebar */
+  --color-acento-tinte: rgba(0, 224, 209, 0.2);     /* botón de acción en tabla */
+  --color-acento-fantasma: rgba(0, 224, 209, 0.15); /* botón "+ Agregar Producto" */
+  --color-acento-fantasma-hover: rgba(0, 224, 209, 0.25);
+
+  /* ---------- Semánticos ---------- */
+  --color-peligro: #ff4444;
+  --color-peligro-suave: #ff6666;                   /* "Cerrar Sesión" del sidebar */
+  --color-peligro-tinte: rgba(255, 68, 68, 0.2);
+  --color-peligro-menu: rgba(255, 68, 68, 0.15);
+  --color-info: #3399ff;                            /* botón "ver" (👁) */
+  --color-info-tinte: rgba(51, 153, 255, 0.2);
+  /* Nuevos: perfil.html pintaba los estados de pedido con `green`/`orange`
+     inline, fuera de cualquier paleta. */
+  --color-exito: #2ecc71;
+  --color-alerta: #f5a623;
+
+  /* ---------- Superficies oscuras ----------
+     El panel admin no usa NINGUNA sombra: la profundidad sale de estas capas
+     de gris más bordes de 1px. */
+  --color-fondo-app: #1a1a1a;
+  --color-fondo-lateral: #111111;
+  --color-superficie: #222222;        /* tarjeta, topbar admin, caja de auth */
+  --color-superficie-alta: #333333;   /* input, th de tabla, caja de resumen */
+  --color-borde: #444444;             /* bordes de controles */
+  --color-borde-suave: #333333;       /* divisores y bordes de tarjeta */
+  --color-neutro: #555555;            /* botón secundario "Limpiar" */
+  --color-neutro-hover: #666666;
+
+  /* ---------- Texto ---------- */
+  --color-texto: #ffffff;
+  --color-texto-tabla: #dddddd;
+  --color-texto-secundario: #cccccc;
+  --color-texto-apagado: #aaaaaa;
+  --color-texto-tenue: #888888;
+  --color-sobre-acento: #000000;      /* texto sobre fondo cian: negro, no blanco */
+
+  /* ---------- Superficie clara ----------
+     Exclusiva de la tarjeta de producto pública: es la única superficie clara
+     de toda la aplicación, flotando sobre el fondo de humo. */
+  --color-tarjeta-clara: #ffffff;
+  --color-tarjeta-clara-titulo: #333333;
+  --color-tarjeta-clara-texto: #666666;
+  --color-tarjeta-clara-tenue: #999999;
+
+  /* ---------- Velos del shell público ---------- */
+  --color-velo-barra: rgba(0, 0, 0, 0.7);
+  --color-velo-pie: rgba(0, 0, 0, 0.8);
+  --color-velo-servicios: #000000;
+
+  /* ---------- Radios ---------- */
+  --radius-tarjeta: 10px;    /* tarjetas, cajas de auth, tarjeta de producto */
+  --radius-admin: 6px;       /* inputs y botones del panel */
+  --radius-publico: 5px;     /* inputs y botones públicos */
+  --radius-resumen: 8px;     /* caja de resumen de venta/compra */
+  --radius-etiqueta: 3px;    /* etiquetas OFERTA / NUEVO */
+  --radius-pastilla: 30px;   /* CTA "Ingresar" del hero */
+
+  /* ---------- Sombras ----------
+     Solo en la tienda pública. El panel admin no lleva ninguna. */
+  --shadow-producto: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-producto-hover: 0 6px 12px rgba(0, 224, 209, 0.3);
+  --shadow-cta: 0 4px 15px rgba(0, 224, 209, 0.4);
+
+  /* ---------- Tipografía ----------
+     El guía declaraba 'Poppins' sin importarla nunca, así que hasta ahora caía
+     a sans-serif. Se carga de verdad con next/font en el layout raíz. */
+  --font-sans: var(--fuente-poppins), ui-sans-serif, system-ui, sans-serif;
+  --text-teja: 1.8rem;         /* número grande de la teja de estadística */
+  --text-teja-moneda: 1.3rem;  /* variante para importes, que son más largos */
+  --text-hero: 3.5rem;
+
+  /* ---------- Breakpoints ----------
+     Los del guía son max-width; Tailwind es min-width, así que la lógica se
+     invierte: la base es móvil y `panel:` es escritorio. Se AÑADEN a los de
+     Tailwind (sm/md/lg/xl), no los reemplazan. */
+  --breakpoint-movil: 600px;
+  --breakpoint-tableta: 700px;
+  --breakpoint-panel: 900px;
+
+  /* ---------- Medidas fijas ---------- */
+  --spacing-sidebar: 250px;
+}

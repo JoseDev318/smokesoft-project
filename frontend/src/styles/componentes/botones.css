@@ -1,0 +1,146 @@
+/* El guía tenía OCHO clases de botón casi idénticas (.boton-ingresar,
+   .boton-entrar, .boton-guardar, .boton-nuevo, .boton-crear, .boton-enviar,
+   .boton-agregar, .btn-ingresar). Aquí se consolidan en variantes. */
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-admin);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Acción principal: cian con texto NEGRO.
+     El guía usaba blanco en .boton-ingresar, que no pasa contraste sobre cian;
+     el resto de sus botones ya usaban negro. */
+  .btn-acento {
+    background-color: var(--color-acento);
+    color: var(--color-sobre-acento);
+  }
+
+  .btn-acento:hover:not(:disabled) {
+    background-color: var(--color-acento-hover);
+  }
+
+  /* Secundario ("Limpiar"). */
+  .btn-neutro {
+    background-color: var(--color-neutro);
+    color: var(--color-texto);
+  }
+
+  .btn-neutro:hover:not(:disabled) {
+    background-color: var(--color-neutro-hover);
+  }
+
+  .btn-peligro {
+    background-color: var(--color-peligro);
+    color: var(--color-texto);
+  }
+
+  .btn-peligro:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+
+  /* Fantasma con borde discontinuo: el "+ Agregar Producto" del formulario de
+     líneas. */
+  .btn-fantasma {
+    background-color: var(--color-acento-fantasma);
+    color: var(--color-acento);
+    border: 1px dashed var(--color-acento);
+    font-weight: 500;
+  }
+
+  .btn-fantasma:hover:not(:disabled) {
+    background-color: var(--color-acento-fantasma-hover);
+  }
+
+  /* CTA público del hero: pastilla con resplandor. Es la única sombra de la
+     tienda aparte de las tarjetas de producto. */
+  .btn-pastilla {
+    padding: 0.75rem 2.2rem;
+    font-size: 1.2rem;
+    border-radius: var(--radius-pastilla);
+    background-color: var(--color-acento);
+    color: var(--color-sobre-acento);
+    box-shadow: var(--shadow-cta);
+    text-decoration: none;
+  }
+
+  .btn-pastilla:hover {
+    background-color: var(--color-acento-hover);
+  }
+
+  /* Botón público de formulario: radio de 5px y ancho completo. */
+  .btn-publico {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: var(--radius-publico);
+  }
+
+  /* ---------- Botones de acción de tabla (32x32, solo emoji) ----------
+     Patrón del guía: fondo con 20% de alfa + texto a color pleno, que se
+     invierte a fondo pleno en hover. */
+  .btn-accion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 0.375rem;
+    font-size: 0.95rem;
+    line-height: 1;
+    border: none;
+    border-radius: var(--radius-admin);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-accion:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .btn-accion-editar {
+    background-color: var(--color-acento-tinte);
+    color: var(--color-acento);
+  }
+
+  .btn-accion-editar:hover:not(:disabled) {
+    background-color: var(--color-acento);
+    color: var(--color-sobre-acento);
+  }
+
+  .btn-accion-eliminar {
+    background-color: var(--color-peligro-tinte);
+    color: var(--color-peligro);
+  }
+
+  .btn-accion-eliminar:hover:not(:disabled) {
+    background-color: var(--color-peligro);
+    color: var(--color-texto);
+  }
+
+  .btn-accion-ver {
+    background-color: var(--color-info-tinte);
+    color: var(--color-info);
+  }
+
+  .btn-accion-ver:hover:not(:disabled) {
+    background-color: var(--color-info);
+    color: var(--color-texto);
+  }
+}

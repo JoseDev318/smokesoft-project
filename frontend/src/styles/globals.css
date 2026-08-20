@@ -1,0 +1,19 @@
+/**
+ * Punto de entrada de estilos. Se importa una sola vez desde src/app/layout.tsx.
+ */
+
+@import "tailwindcss";
+
+@import "./tokens.css";
+@import "./base.css";
+
+@import "./componentes/formulario.css";
+@import "./componentes/tabla.css";
+@import "./componentes/botones.css";
+@import "./componentes/shell-publico.css";
+@import "./componentes/tarjeta-producto.css";
+
+/* La detección automática de Tailwind v4 parte del directorio del archivo CSS.
+   Como este vive en src/styles/, hay que apuntarle explícitamente a src/ o no
+   encontraría las clases usadas en app/ y modules/. */
+@source "../";
