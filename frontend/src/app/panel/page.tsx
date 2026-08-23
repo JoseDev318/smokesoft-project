@@ -1,12 +1,12 @@
-export default function DashboardPage() {
+export default function PanelHome() {
   return (
-    <main className="flex min-h-[calc(100vh-73px)] flex-col items-center justify-center px-6 text-center">
-      <h1 className="font-display text-3xl font-bold text-hueso">
-        Panel de administración
+    <div>
+      <h1 className="font-display text-2xl font-bold text-hueso">
+        Dashboard
       </h1>
-      <p className="mt-2 text-humo">
-        Si ves esto, el middleware te dejó pasar correctamente.
+      <p className="mt-1 text-humo">
+        Bienvenido al panel de administración de SmokeSoft.
       </p>
-    </main>
+    </div>
   );
 }
