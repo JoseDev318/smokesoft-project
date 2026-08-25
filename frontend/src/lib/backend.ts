@@ -23,6 +23,6 @@ export async function fetchBackend(path: string, options: RequestInit = {}) {
   if (!res.ok) {
     throw new Error(`Error ${res.status} al consultar ${path}`);
   }
-
+  if (res.status === 204) return null; // DELETE no devuelve cuerpo
   return res.json();
 }
