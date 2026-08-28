@@ -14,6 +14,7 @@ router.get('/:id', verificarRol('Administrador'), usuariosController.obtener);
 router.post('/', verificarRol('Administrador'), usuariosController.crear);
 router.put('/:id', verificarRol('Administrador'), usuariosController.actualizar);
 router.patch('/:id/estado', verificarRol('Administrador'), usuariosController.cambiarEstado);
+router.patch('/:id/clave', verificarRol('Administrador'), usuariosController.cambiarClave);
 router.delete('/:id', verificarRol('Administrador'), usuariosController.eliminar);
 
 module.exports = router;

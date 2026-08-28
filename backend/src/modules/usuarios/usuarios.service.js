@@ -46,8 +46,18 @@ async function cambiarEstado(id, estado) {
   return result.rows[0];
 }
 
+async function cambiarClave(id, claveNueva) {
+  const claveHash = await bcrypt.hash(claveNueva, 10);
+  const result = await pool.query(
+    `UPDATE usuario SET clave = $1 WHERE id_usuario = $2
+     RETURNING id_usuario, nombre, usuario, correo, rol, estado`,
+    [claveHash, id]
+  );
+  return result.rows[0];
+}
+
 async function eliminar(id) {
   await pool.query('DELETE FROM usuario WHERE id_usuario = $1', [id]);
 }
 
-module.exports = { obtenerTodos, obtenerPorId, crear, actualizar, cambiarEstado, eliminar };
+module.exports = { obtenerTodos, obtenerPorId, crear, actualizar, cambiarEstado, cambiarClave, eliminar };

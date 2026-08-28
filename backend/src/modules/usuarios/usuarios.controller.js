@@ -36,6 +36,13 @@ async function cambiarEstado(req, res, next) {
   } catch (error) { next(error); }
 }
 
+async function cambiarClave(req, res, next) {
+  try {
+    const actualizado = await usuariosService.cambiarClave(req.params.id, req.body.clave);
+    res.json(actualizado);
+  } catch (error) { next(error); }
+}
+
 async function eliminar(req, res, next) {
   try {
     await usuariosService.eliminar(req.params.id);
@@ -43,4 +50,4 @@ async function eliminar(req, res, next) {
   } catch (error) { next(error); }
 }
 
-module.exports = { listar, obtener, crear, actualizar, cambiarEstado, eliminar };
+module.exports = { listar, obtener, crear, actualizar, cambiarEstado, cambiarClave, eliminar };
