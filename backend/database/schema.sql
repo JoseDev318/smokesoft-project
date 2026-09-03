@@ -55,6 +55,14 @@ CREATE TABLE compra (
     total        DECIMAL(10,2) NOT NULL DEFAULT 0
 );
 
+CREATE TABLE detalle_compra (
+    id_detalle  SERIAL PRIMARY KEY,
+    id_compra   INT REFERENCES compra(id_compra) ON DELETE CASCADE,
+    id_producto INT REFERENCES producto(id_producto),
+    cantidad    INT NOT NULL,
+    subtotal    DECIMAL(10,2) NOT NULL
+);
+
 CREATE TABLE venta (
     id_venta   SERIAL PRIMARY KEY,
     id_cliente INT REFERENCES cliente(id_cliente),

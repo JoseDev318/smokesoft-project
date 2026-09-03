@@ -10,6 +10,7 @@ const SECCIONES = [
   { href: "/panel/productos", label: "Productos", icono: "📦" },
   { href: "/panel/categorias", label: "Categorías", icono: "🏷️" },
   { href: "/panel/proveedores", label: "Proveedores", icono: "🚚" },
+  { href: "/panel/compras", label: "Compras", icono: "🧾" },
   { href: "/panel/clientes", label: "Clientes", icono: "👥" },
   { href: "/panel/usuarios", label: "Usuarios", icono: "🔐" },
 ];
